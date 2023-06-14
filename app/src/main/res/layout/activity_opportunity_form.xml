@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OpportunityForm">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dp"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/opp_form_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:gravity="center"
+            android:text="Add opportunity"/>
+        <EditText
+            android:id="@+id/input_opport_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/opp_form_title"
+            android:padding="8dp"
+            android:hint="Title"
+            android:layout_margin="12dp"
+            android:background="@drawable/button_background"
+            />
+        <EditText
+            android:id="@+id/input_opp_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_opport_title"
+            android:padding="8dp"
+            android:hint="category"
+            android:layout_margin="12dp"
+            android:background="@drawable/button_background"
+            />
+        <EditText
+            android:id="@+id/input_opp_due_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_opp_category"
+            android:padding="8dp"
+            android:hint="due date"
+            android:layout_margin="12dp"
+            android:background="@drawable/button_background"
+            />
+
+        <EditText
+            android:id="@+id/input_opp_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:layout_below="@id/input_opp_due_date"
+            android:inputType="textMultiLine"
+            android:padding="8dp"
+            android:layout_margin="12dp"
+            android:hint="description and details"
+            android:background="@drawable/button_background"/>
+
+
+        <EditText
+            android:id="@+id/input_opp_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_opp_description"
+            android:padding="8dp"
+            android:layout_margin="12dp"
+            android:inputType="textMultiLine"
+            android:hint="ie 0789651688/0704147754 ssentamuabel90@gmail.com"
+            android:background="@drawable/button_background"
+            />
+        <EditText
+            android:id="@+id/input_opp_target"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_opp_contact"
+            android:padding="8dp"
+            android:hint="select target"
+            android:layout_margin="12dp"
+            android:background="@drawable/button_background"
+            />
+        <Button
+            android:id="@+id/opp_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_margin="12dp"
+            android:layout_below="@+id/input_opp_target"
+            android:text="Submit"
+            />
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

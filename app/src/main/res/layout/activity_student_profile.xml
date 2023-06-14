@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_bg"
+    tools:context=".StudentProfile">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/head_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+
+        android:padding="10dp">
+
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_account_circle_24" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/profileImage"
+            app:layout_constraintStart_toStartOf="@id/profileImage"
+            app:layout_constraintTop_toBottomOf="@id/profileImage">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:textSize="20sp"
+                android:text="Ssentamu Abel"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bachelor of Information Technology and Computing"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="ALUMUNUS-2023"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/profile_srollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/head_title">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/basic_infor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:padding="10dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/basic_info_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:padding="3dp"
+                        android:textSize="16sp"
+                        android:text="Basic Information"/>
+
+                    <TextView
+                        android:id="@+id/maritial_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="15sp"
+                        android:layout_below="@id/basic_info_head"
+                        android:text="MaritialStatus: MARRIED"/>
+
+                    <TextView
+                        android:id="@+id/employment_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="15sp"
+                        android:layout_below="@id/maritial_status"
+                        android:text="Employment Status: EMPLOYED"/>
+
+                    <TextView
+                        android:id="@+id/hall_at_campus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="15sp"
+                        android:layout_below="@id/employment_status"
+                        android:text="Hall Attached: KULUBYA"/>
+                    <TextView
+                        android:id="@+id/home_town"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="15sp"
+                        android:layout_below="@id/hall_at_campus"
+                        android:text="Home Town: MASAKA"/>
+
+                    <TextView
+                        android:id="@+id/residence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="15sp"
+                        android:layout_below="@id/home_town"
+                        android:text="Residences: NAKULABYE"/>
+                    <TextView
+                        android:id="@+id/d_0_B"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="15sp"
+                        android:layout_below="@id/residence"
+                        android:text="Date of Birth: 12-04-2023"/>
+
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+
+                android:id="@+id/occupation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/basic_infor">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/occupation_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="15sp"
+                        android:text="Occupation"/>
+
+                    <RelativeLayout
+                        android:id="@+id/first_0ccupation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/occupation_head">
+
+                        <TextView
+                            android:id="@+id/duration_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:text="FROM: 12-03-2012  TO: NOW"/>
+                        <TextView
+                            android:id="@+id/name_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/duration_1"
+                            android:text="Duty: SOFTWARE DEVELOPER"/>
+                        <TextView
+                            android:id="@+id/institution_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/name_1"
+                            android:text="Inst: PAHAPPA LTD"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+
+                        android:id="@+id/second_occupation"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/first_0ccupation">
+
+                        <TextView
+                            android:id="@+id/duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:text="FROM: 12-03-2012  TO: NOW"/>
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/duration"
+                            android:text="Duty: SOFTWARE INTERN"/>
+                        <TextView
+                            android:id="@+id/institution"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/name"
+                            android:text="Inst: MARA-SCIENTIFIC"/>
+
+                    </RelativeLayout>
+
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/contacts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/occupation">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/contact_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="16sp"
+                        android:text="Contacts"/>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/guardians"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/contacts">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/guardian_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="16sp"
+                        android:text="Guardians"/>
+                    <RelativeLayout
+                        android:id="@+id/first_guardian"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/guardian_head">
+
+                        <TextView
+                            android:id="@+id/full_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:text="SSENTAMU ALFRED"/>
+                        <TextView
+                            android:id="@+id/relationship"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/full_name"
+                            android:text="Relationship:FATHER"/>
+                        <TextView
+                            android:id="@+id/contact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/relationship"
+                            android:text="TEL: +256704547753"/>
+                        <TextView
+                            android:id="@+id/guardian_residence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/contact"
+                            android:text="KIBULI"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+
+                        android:id="@+id/second_guardian"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@id/first_guardian">
+
+                        <TextView
+                            android:id="@+id/full_name_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:text="Name: NAKAFERO HALIMAH"/>
+                        <TextView
+                            android:id="@+id/relationship_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/full_name_1"
+                            android:text="Relationship:MOTHER"/>
+                        <TextView
+                            android:id="@+id/contact_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/relationship_1"
+                            android:text="TEL: +256704547753"/>
+                        <TextView
+                            android:id="@+id/guardian_residence_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/contact_1"
+                            android:text="Residence: KIBULI"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/next_of_kins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/guardians">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/next_of_kin_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="15sp"
+                        android:text="Next of Kins"/>
+
+                    <RelativeLayout
+                        android:id="@+id/first_next_of_kin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/next_of_kin_head">
+
+                        <TextView
+                            android:id="@+id/next_of_kin_full_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:text="Name: NANTALE HALIMAH"/>
+                        <TextView
+                            android:id="@+id/next_of_kin_relationship"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/next_of_kin_full_name"
+                            android:text="Relationship:WIFE"/>
+                        <TextView
+                            android:id="@+id/next_of_kin_contact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/next_of_kin_relationship"
+                            android:text="TEL: +256704547753"/>
+
+
+                    </RelativeLayout>
+                    <RelativeLayout
+
+                        android:id="@+id/second_next_of_kin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@id/first_next_of_kin">
+
+                        <TextView
+                            android:id="@+id/next_of_kin_full_name_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:text="Name: BABIRYE HALIMAH"/>
+                        <TextView
+                            android:id="@+id/next_of_kin_relationship_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/next_of_kin_full_name_1"
+                            android:text="Relationship: SISTER"/>
+                        <TextView
+                            android:id="@+id/next_of_kin_contact_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:textSize="15sp"
+                            android:layout_below="@id/next_of_kin_relationship_1"
+                            android:text="TEL: +256704547753"/>
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/leadership"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/next_of_kins">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="16sp"
+                        android:text="Leadership Roles"/>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/previous_schools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/leadership">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:textSize="22sp"
+                        android:text="Previous Schools"/>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+
+
+
+</RelativeLayout>

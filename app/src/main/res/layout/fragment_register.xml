@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_background"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+
+        android:padding="3dp">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/convo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/register"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo"
+            app:layout_constraintBottom_toTopOf="@id/input_forms"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Register"
+            android:textColor="@color/primaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+
+            />
+        <ScrollView
+            android:id="@+id/input_forms"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register"
+            app:layout_constraintBottom_toTopOf="@id/login_direction"
+
+            >
+
+            <RelativeLayout
+                android:id="@+id/mainbody"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
+
+                <EditText
+                    android:id="@+id/firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background_white"
+                    android:inputType="text"
+                    android:layout_margin="12dp"
+                    android:hint="First Name"
+                    android:textColor="@color/primaryDark"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+
+
+                <EditText
+                    android:id="@+id/lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/firstname"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/button_background_white"
+                    android:hint="Last Name"
+                    android:inputType="text"
+                    android:textColor="@color/primaryDark"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+                <EditText
+                    android:id="@+id/contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lastname"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/button_background_white"
+                    android:hint="contact"
+                    android:inputType="text"
+                    android:textColor="@color/primaryDark"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+
+
+                <EditText
+                    android:id="@+id/regNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/contact"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/button_background_white"
+                    android:hint="Registration Number"
+                    android:inputType="text"
+                    android:textColor="@color/primaryDark"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+
+                <EditText
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/regNo"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/button_background_white"
+                    android:hint="Alumni/Student"
+                    android:inputType="text"
+                    android:textColor="@color/primaryDark"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+
+                <EditText
+                    android:id="@+id/course"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/status"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/button_background_white"
+                    android:hint="course"
+                    android:inputType="text"
+                    android:textColor="@color/primaryDark"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+
+                <EditText
+                    android:id="@+id/hall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/course"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/button_background_white"
+                    android:hint="Hall of Attachment"
+                    android:inputType="text"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+
+
+                <EditText
+                    android:id="@+id/dateOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/hall"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/button_background_white"
+                    android:hint="date of birth"
+                    android:inputType="text"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+                <EditText
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dateOfBirth"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/button_background_white"
+                    android:hint="gender"
+                    android:inputType="text"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+                <EditText
+                    android:id="@+id/maritialStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gender"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/button_background_white"
+                    android:hint="Maritial status"
+                    android:inputType="text"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+                <EditText
+                    android:id="@+id/residence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/maritialStatus"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/button_background_white"
+                    android:hint="Place of residence"
+                    android:inputType="text"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+                <EditText
+                    android:id="@+id/homeDistrict"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/residence"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/button_background_white"
+                    android:hint="Home District"
+                    android:inputType="text"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/homeDistrict"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/button_background_white"
+                    android:hint="username"
+                    android:inputType="text"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/username"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/primaryDark"
+                    android:background="@drawable/button_background_white"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/email"
+                    android:textColor="@color/primaryDark"
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:inputType="textPassword"
+                    android:background="@drawable/button_background_white"
+                    android:hint="Password"
+                    android:textColorHint="@color/primaryColor"
+                    android:padding="8dp" />
+
+                <Button
+                    android:id="@+id/register_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/password"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/submit_button"
+                    android:padding="8dp"
+                    android:text="submit" />
+
+            </RelativeLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/login_direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already hava an account"
+           android:textSize="14sp"
+            android:textColor="@color/primaryColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/login_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/login_direction"
+            android:layout_marginBottom="50dp"
+            android:textSize="14sp"
+            android:textColor="@color/primaryDark"
+            app:layout_constraintTop_toBottomOf="@id/input_forms"
+            android:text=" Login "/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>
