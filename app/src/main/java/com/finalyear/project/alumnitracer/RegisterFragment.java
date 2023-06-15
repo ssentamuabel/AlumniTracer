@@ -1,14 +1,20 @@
 package com.finalyear.project.alumnitracer;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +29,10 @@ import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import java.time.Year;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -37,7 +46,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegisterFragment extends Fragment {
 
     String firstName, lastName, regNo, status, course, hall,email, username,dob,  password;
-    String  contact, maritialStatus, residence, homeTown, gender, user;
+    String  contact, maritialStatus, residence, homeTown, gender, user, comfirmPassword;
+
+    Calendar calendar = Calendar.getInstance();
+    int year = calendar.get(Calendar.YEAR);
+    int month = calendar.get(Calendar.MONTH);
+    int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
     private FragmentRegisterBinding binding;
     private ApiInterface apiInterface;
     private Retrofit retrofit ;
@@ -65,6 +79,118 @@ public class RegisterFragment extends Fragment {
 
         View view = binding.getRoot();
 
+        //  status drop down
+
+        ArrayAdapter<CharSequence> statusAdapter =  ArrayAdapter.createFromResource(getContext(), R.array.status_array, android.R.layout.simple_spinner_item);
+
+        statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.status.setAdapter(statusAdapter);
+
+        binding.status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d("LOG: ", " To console: "+parent.getItemAtPosition(position).toString());
+
+                status = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        // maritaial drop down
+
+        ArrayAdapter<CharSequence> maritialAdapter =  ArrayAdapter.createFromResource(getContext(), R.array.maritial_array, android.R.layout.simple_spinner_item);
+
+        maritialAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.maritialStatus.setAdapter(maritialAdapter);
+
+        binding.maritialStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d("LOG: ", " To console: "+parent.getItemAtPosition(position).toString());
+                maritialStatus = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        // hall drop down
+
+        ArrayAdapter<CharSequence> hallAdapter =  ArrayAdapter.createFromResource(getContext(), R.array.hall_array, android.R.layout.simple_spinner_item);
+
+        hallAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.hall.setAdapter(hallAdapter);
+
+        binding.hall.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d("LOG: ", " To console: "+parent.getItemAtPosition(position).toString());
+                hall = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
+        // Gender drop down
+        ArrayAdapter<CharSequence> adapter =  ArrayAdapter.createFromResource(getContext(), R.array.gender_array, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.gender.setAdapter(adapter);
+
+        binding.gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d("LOG: ", " To console: "+parent.getItemAtPosition(position).toString());
+
+                gender = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        // date picker
+
+        binding.dateOfBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // create a date picker dialog
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
+                        binding.dateOfBirth.setText(selectedDate);
+                    }
+                },  year, month, dayOfMonth);
+
+                // Show the Date Picker Dialog
+                datePickerDialog.show();
+            }
+        });
+
+
 
         binding.loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,27 +210,40 @@ public class RegisterFragment extends Fragment {
         binding.registerSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                binding.firstname.setError(null);
+                binding.lastname.setError(null);
+                binding.regNo.setError(null);
+                binding.course.setError(null);
+                binding.dateOfBirth.setError(null);
+                binding.email.setError(null);
+                binding.username.setError(null);
+                binding.password.setError(null);
+                binding.residence.setError(null);
+                binding.homeDistrict.setError(null);
+                binding.contact.setError(null);
+                binding.comfirmPassword.setError(null);
 
-               firstName = binding.firstname.getText().toString();
-               lastName = binding.lastname.getText().toString();
-               regNo = binding.regNo.getText().toString();
-               status = binding.status.getText().toString();
-               course = binding.course.getText().toString();
-               hall = binding.hall.getText().toString();
-               gender = binding.gender.getText().toString();
-                dob  = binding.dateOfBirth.getText().toString();
-               email = binding.email.getText().toString();
-               username = binding.username.getText().toString();
-               password = binding.password.getText().toString();
-               maritialStatus = binding.maritialStatus.getText().toString();
-               residence = binding.residence.getText().toString();
-               homeTown = binding.homeDistrict.getText().toString();
-               contact = binding.contact.getText().toString();
+               firstName = binding.firstname.getText().toString().trim();
+               lastName = binding.lastname.getText().toString().trim();
+               regNo = binding.regNo.getText().toString().trim();
+               course = binding.course.getText().toString().trim();
+                dob  = binding.dateOfBirth.getText().toString().trim();
+               email = binding.email.getText().toString().trim();
+               username = binding.username.getText().toString().trim();
+               password = binding.password.getText().toString().trim();
+               residence = binding.residence.getText().toString().trim();
+               homeTown = binding.homeDistrict.getText().toString().trim();
+               contact = binding.contact.getText().toString().trim();
+               comfirmPassword =binding.comfirmPassword.getText().toString().trim();
 
 
-               if(firstName.isEmpty() || lastName.isEmpty()|| regNo.isEmpty()|| status.isEmpty()|| course.isEmpty()||
-                    hall.isEmpty() || gender.isEmpty() ||email.isEmpty() || username.isEmpty() || password.isEmpty()){
-                   Toast.makeText(getContext(), "Feel all the fields", Toast.LENGTH_SHORT).show();
+                formValidation();
+                Toast.makeText(getContext(), "Result: "+ formValidation().toString(), Toast.LENGTH_SHORT).show();
+
+
+               if(firstName.isEmpty() || lastName.isEmpty()|| regNo.isEmpty()|| status.equals("Student/Alumunus")|| course.isEmpty()||
+                    hall.isEmpty() || gender.equals("Select Gender") ||email.isEmpty() || username.isEmpty() || password.isEmpty()){
+                  // Toast.makeText(getContext(), "Feel all the fields", Toast.LENGTH_SHORT).show();
                }else{
                    Toast.makeText(getContext(), "Thanks for registering", Toast.LENGTH_SHORT).show();
                    JsonObject dataObject = new JsonObject();
@@ -132,6 +271,20 @@ public class RegisterFragment extends Fragment {
 
 
                    RegisterUser(dataObject);
+
+               binding.firstname.setText(null);
+              binding.lastname.setText("");
+              binding.regNo.setText("");
+              binding.course.setText("");
+              binding.dateOfBirth.setText("");
+              binding.email.setText("");
+              binding.username.setText("");
+              binding.password.setText("");
+              binding.residence.setText("");
+              binding.homeDistrict.setText("");
+              binding.contact.setText("");
+
+
                }
             }
         });
@@ -188,7 +341,128 @@ public class RegisterFragment extends Fragment {
     }
 
 
+    private Boolean formValidation(){
+        Boolean result = false;
+        if(TextUtils.isEmpty(firstName) || !validateName(firstName)){
+            binding.firstname.setError("First name is invalid");
+            binding.firstname.requestFocus();
 
+            result = result || true;
+        }
+
+        if(TextUtils.isEmpty(lastName) || !validateName(lastName)){
+            binding.lastname.setError("Last name is invalid");
+            binding.lastname.requestFocus();
+
+            result = result || true;
+        }
+
+
+
+        if(TextUtils.isEmpty(residence) || !validateName(residence)){
+            homeTown="UNKNOWN";
+
+            result = result || true;
+        }
+
+
+        if(TextUtils.isEmpty(homeTown) || !validateName(homeTown)){
+            homeTown="UNKNOWN";
+
+            result = result || true;
+        }
+
+        if(TextUtils.isEmpty(course) || !validateName(course)){
+            binding.course.setError("Invalid input");
+            binding.course.requestFocus();
+
+            result = result || true;
+        }
+
+        if(TextUtils.isEmpty(contact) || !validatePhone(contact)){
+            binding.contact.setError("Contact is invalid");
+            binding.contact.requestFocus();
+
+            result = result || true;
+        }
+
+        if(hall.equals("Select Hall") ){
+            hall = "KULUBYA";
+        }
+
+        if(maritialStatus.equals("Select Maritial Status") ){
+            maritialStatus = "SINGLE";
+        }
+
+        if(gender.equals("Select Gender")){
+
+            result = result || true;
+        }
+
+        if(status.equals("Student/Alumunus")){
+
+            result = result || true;
+        }
+
+        if(!validateEmail(email)){
+            binding.email.setError("Email is invalid");
+            binding.email.requestFocus();
+            result = result || true;
+        }
+        if(!validatePassword(password)){
+            binding.password.setError("The password is too simple");
+            binding.password.requestFocus();
+            result = result || true;
+        }
+
+
+        if(!comfirmPassword.equals(password) ){
+            binding.comfirmPassword.setError("The passwords do not match");
+            binding.comfirmPassword.requestFocus();
+            result = result || true;
+        }
+
+        if(TextUtils.isEmpty(username) || !validateName(username) ){
+            binding.username.setError("Username is not valid");
+            binding.username.requestFocus();
+            result = result || true;
+        }
+
+
+
+        return result;
+    }
+
+
+    private Boolean validateName(String name){
+        Pattern pattern = Pattern.compile("^[A-Za-z]+(?:[ '-][A-Za-z]+)*$");
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+
+    private Boolean validatePhone(String phone){
+        Pattern pattern = Pattern.compile("^(?:\\+?\\d{1,3}[-.\\s]?)?\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}$");
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
+    }
+
+    private Boolean validateReg(String reg){
+        Pattern pattern = Pattern.compile("^(?:\\+?\\d{1,3}[-.\\s]?)?\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}$");
+        Matcher matcher = pattern.matcher(reg);
+        return matcher.matches();
+    }
+
+    private Boolean validateEmail(String email){
+        Pattern pattern = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private Boolean validatePassword(String password){
+        Pattern pattern = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$");
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
 
 
 

@@ -2,4 +2,28 @@
     <string name="app_name">AlumniTracer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="gender_array">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="hall_array">
+        <item>Select Hall</item>
+        <item>NORTH_HALL</item>
+        <item>NANZIRI</item>
+        <item>PEARL</item>
+        <item>BLUENILE</item>
+        <item>KULUBYA</item>
+        <item>MANDELLA</item>
+    </string-array>
+    <string-array name="maritial_array">
+        <item>Select Maritial Status</item>
+        <item>SINGLE</item>
+        <item>MARRIED</item>
+    </string-array>
+    <string-array name="status_array">
+        <item>Student/Alumunus</item>
+        <item>STUDENT</item>
+        <item>ALUMUNUS</item>
+    </string-array>
 </resources>
