@@ -13,6 +13,11 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
 
+
+    @Headers("Content-Type: application/json")
+    @POST("Opportunity/AddOpportunity")
+    Call<OpportunityResponse> addOpportunity(@Body JsonObject body );
+
     @Headers("Content-Type: application/json")
     @GET("Student/GetStudents")
     Call<StudentsResponse> getStudents(@Header("Authorization") String authorization);

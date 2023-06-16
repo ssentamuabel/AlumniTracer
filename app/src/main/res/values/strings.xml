@@ -26,4 +26,16 @@
         <item>STUDENT</item>
         <item>ALUMUNUS</item>
     </string-array>
+    <string-array name="category_array">
+        <item>Select category</item>
+        <item>INTERN</item>
+        <item>GRADUATE_TRAINING</item>
+        <item>JOB</item>
+    </string-array>
+    <string-array name="target_array">
+        <item>Select Target group</item>
+        <item>GRADUATE</item>
+        <item>UNDER_GRADUATE</item>
+        <item>ANY</item>
+    </string-array>
 </resources>

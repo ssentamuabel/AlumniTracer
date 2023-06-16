@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,7 +56,7 @@ public class LoginFragment extends Fragment {
 
 
 
-       // checkUser();
+        checkUser();
 
 
         binding.signUpLink.setOnClickListener(new View.OnClickListener() {
@@ -71,10 +73,14 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                username = binding.username.getText().toString();
-                password = binding.password.getText().toString();
-                if(username.isEmpty() || password.isEmpty()){
+                binding.username.setError(null);
+                binding.password.setError(null);
+
+                username = binding.username.getText().toString().trim();
+                password = binding.password.getText().toString().trim();
+                if(validation()){
                     Toast.makeText(getContext(), "Feel the fields", Toast.LENGTH_SHORT).show();
+
                 }else{
 
                     JsonObject dataObject = new JsonObject();
@@ -82,70 +88,11 @@ public class LoginFragment extends Fragment {
                     dataObject.addProperty("username", username);
                     dataObject.addProperty("password", password);
 
-                    HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-                    loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-                    OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                            .addInterceptor(loggingInterceptor)
-                            .build();
-
-
-                    Retrofit retrofit  = new Retrofit.Builder()
-                            .baseUrl("http://172.105.109.154:8080/alumni/api/v1/")
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .client(okHttpClient)
-                            .build();
-
-                    apiInterface = retrofit.create(ApiInterface.class);
-
-
-                    Call<UserResponse> call  = apiInterface.login(dataObject);
-
-                    call.enqueue(new Callback<UserResponse>() {
-                        @Override
-                        public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-
-                            Log.d("DEBug", "onResponse: " + response.body().getUser().getFirstName());
-
-
-                            if(!response.isSuccessful()){
-                                msg ="Some thing went wrong";
-
-                            }
-
-                            Log.d("DEBug", "onResponse: " + response.body().getUser().getFirstName());
-
-                            user = response.body().getUser();
-                            Log.d("DEBug", "User: " + user.getFirstName());
-
-                            System.out.println(response);
-                            System.out.println(user.getGender());
-
-
-                            // storing the token and the username to  the shared preferences
-                            sp = getContext().getSharedPreferences("user_data", Context.MODE_PRIVATE);
-                            SharedPreferences.Editor editor  = sp.edit();
-                            editor.putString("token", response.body().getUser().getToken());
-                            editor.putString("username", response.body().getUser().getUsername());
-                            editor.commit();
-
-
-
-                            Intent intent = new Intent(getContext().getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<UserResponse> call, Throwable t) {
-                            msg="The process failed";
-                        }
-                    });
+                    login(dataObject);
 
 
 
 
-                    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT);
                 }
             }
         });
@@ -169,5 +116,99 @@ public class LoginFragment extends Fragment {
         }
     }
 
+    private Boolean validation(){
+        Boolean result = false;
+
+        if(username.isEmpty()){
+            binding.username.setError("Usernam is missing");
+            binding.username.requestFocus();
+            result = result || true;
+        }
+
+        if(password.isEmpty()){
+            binding.password.setError("Usernam is missing");
+            binding.password.requestFocus();
+            result = result || true;
+        }
+        return result;
+    }
+
+
+    private void login(JsonObject dataObject){
+
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build();
+
+
+        Retrofit retrofit  = new Retrofit.Builder()
+                .baseUrl("http://172.105.109.154:8080/alumni/api/v1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build();
+
+        apiInterface = retrofit.create(ApiInterface.class);
+
+
+
+        Call<UserResponse> call  = apiInterface.login(dataObject);
+
+        call.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+
+
+
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        if (response.body().getUser() == null) {
+
+                            Toast.makeText(getContext().getApplicationContext(), "Username and password do not match", Toast.LENGTH_LONG);
+
+                        }else{
+                            Log.d("DEBug", "onResponse: " + response.body().getUser().getFirstName());
+
+
+
+
+                            Log.d("DEBug", "onResponse: " + response.body().getUser().getFirstName());
+
+                            user = response.body().getUser();
+                            Log.d("DEBug", "User: " + user.getFirstName());
+
+
+
+
+                            // storing the token and the username to  the shared preferences
+                            sp = getContext().getSharedPreferences("user_data", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor  = sp.edit();
+                            editor.putString("token", response.body().getUser().getToken());
+                            editor.putString("username", response.body().getUser().getUsername());
+                            editor.commit();
+
+
+
+                            Intent intent = new Intent(getContext().getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+
+
+                        }
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Check your connection", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+    }
 
 }

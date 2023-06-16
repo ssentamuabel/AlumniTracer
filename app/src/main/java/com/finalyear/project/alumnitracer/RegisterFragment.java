@@ -241,11 +241,10 @@ public class RegisterFragment extends Fragment {
                 Toast.makeText(getContext(), "Result: "+ formValidation().toString(), Toast.LENGTH_SHORT).show();
 
 
-               if(firstName.isEmpty() || lastName.isEmpty()|| regNo.isEmpty()|| status.equals("Student/Alumunus")|| course.isEmpty()||
-                    hall.isEmpty() || gender.equals("Select Gender") ||email.isEmpty() || username.isEmpty() || password.isEmpty()){
-                  // Toast.makeText(getContext(), "Feel all the fields", Toast.LENGTH_SHORT).show();
+               if(!formValidation()){
+                   Toast.makeText(getContext(), "Form is missing some values, please try again.", Toast.LENGTH_SHORT).show();
                }else{
-                   Toast.makeText(getContext(), "Thanks for registering", Toast.LENGTH_SHORT).show();
+
                    JsonObject dataObject = new JsonObject();
                    JsonObject userObj = new JsonObject();
 
@@ -434,7 +433,7 @@ public class RegisterFragment extends Fragment {
     }
 
 
-    private Boolean validateName(String name){
+    public static Boolean validateName(String name){
         Pattern pattern = Pattern.compile("^[A-Za-z]+(?:[ '-][A-Za-z]+)*$");
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
