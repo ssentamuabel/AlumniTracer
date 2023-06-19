@@ -21,9 +21,7 @@ public class AuthActivity extends AppCompatActivity {
 
        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout, new LoginFragment()).commit();
 
-        toolbar = findViewById(R.id.toolbar);
-        this.setSupportActionBar(toolbar);
-        this.getSupportActionBar().setTitle("");
+
     }
 
 

@@ -24,7 +24,7 @@
     <string-array name="status_array">
         <item>Student/Alumunus</item>
         <item>STUDENT</item>
-        <item>ALUMUNUS</item>
+        <item>ALUMNUS</item>
     </string-array>
     <string-array name="category_array">
         <item>Select category</item>
@@ -37,5 +37,11 @@
         <item>GRADUATE</item>
         <item>UNDER_GRADUATE</item>
         <item>ANY</item>
+    </string-array>
+    <string-array name="Employment_array">
+        <item>Select Employment Status</item>
+        <item>Employment</item>
+        <item>UNEMPLOYED</item>
+
     </string-array>
 </resources>

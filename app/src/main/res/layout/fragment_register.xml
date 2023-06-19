@@ -168,9 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/dateOfBirth"
                     android:layout_margin="10dp"
-
-
-
+                    android:background="@drawable/button_background_white"
                     android:padding="8dp" />
                 <Spinner
                     android:id="@+id/maritialStatus"

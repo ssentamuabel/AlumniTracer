@@ -110,6 +110,7 @@ public class OpportunityForm extends AppCompatActivity {
                   public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                       String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
                       binding.inputOppDueDate.setText(selectedDate);
+                      dueDate = selectedDate;
                   }
               },year, month, dayOfMonth);
               // Show the Date Picker Dialog
@@ -128,20 +129,18 @@ public class OpportunityForm extends AppCompatActivity {
                 contact = binding.inputOppContact.getText().toString().trim();
                 description = binding.inputOppDescription.getText().toString().trim();
 
-                if(formValidation() == false){
+                if(formValidation() == true){
 
-                    Toast.makeText(OpportunityForm.this, "Thanks for registering", Toast.LENGTH_SHORT).show();
-                }else{
                     Toast.makeText(OpportunityForm.this, "You have to fill all the fields", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(OpportunityForm.this, "Thanks for registering", Toast.LENGTH_SHORT).show();
 
                     SharedPreferences sp = OpportunityForm.this.getSharedPreferences("user_data", Context.MODE_PRIVATE);
                     String token = sp.getString("token", "");
 
-                    JsonObject dataObject = new JsonObject();
                     JsonObject oppObj = new JsonObject();
 
-
-
+                    Log.d("Date Test", "This is the date: "+ dueDate);
 
                     oppObj.addProperty("token", token);
                     oppObj.addProperty("target", target);
@@ -151,18 +150,9 @@ public class OpportunityForm extends AppCompatActivity {
                     oppObj.addProperty("title", title);
                     oppObj.addProperty("contact", contact);
 
-                    addOpportunity(dataObject);
+                    addOpportunity(oppObj);
 
                 }
-
-
-
-
-
-
-
-
-
 
             }
         });
@@ -239,12 +229,12 @@ public class OpportunityForm extends AppCompatActivity {
             result = result || true;
         }
 
-        if( !category.equals("Select category")){
+        if(!category.equals("Select category")){
             if(category.equals("INTERN")){
                 category="Intern";
             }
             if(category.equals("GRADUATE_TRAINING")){
-                category="GraduateTraining";
+                category="Graduate_training";
             }
             if(category.equals("JOB")){
                 category="Payable";
@@ -252,13 +242,13 @@ public class OpportunityForm extends AppCompatActivity {
         } else{result = result || true;}
 
         if( !target.equals("Select Target group")){
-            if(category.equals("ANY")){
+            if(target.equals("ANY")){
                 target="Any";
             }
-            if(category.equals("UNDER_GRADUATE")){
-                target="Undergraduate";
+            if(target.equals("UNDER_GRADUATE")){
+                target="Under_graduate";
             }
-            if(category.equals("GRADUATE")){
+            if(target.equals("GRADUATE")){
                 target="Graduate";
             }
         } else{result = result || true;}

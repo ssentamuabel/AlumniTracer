@@ -120,13 +120,13 @@ public class LoginFragment extends Fragment {
         Boolean result = false;
 
         if(username.isEmpty()){
-            binding.username.setError("Usernam is missing");
+            binding.username.setError("Username is missing");
             binding.username.requestFocus();
             result = result || true;
         }
 
         if(password.isEmpty()){
-            binding.password.setError("Usernam is missing");
+            binding.password.setError("Password is missing");
             binding.password.requestFocus();
             result = result || true;
         }
@@ -196,6 +196,8 @@ public class LoginFragment extends Fragment {
 
 
                         }
+                    }else{
+                        msg = response.message();
                     }
                 }
 

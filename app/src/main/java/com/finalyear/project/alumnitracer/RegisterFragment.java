@@ -237,11 +237,10 @@ public class RegisterFragment extends Fragment {
                comfirmPassword =binding.comfirmPassword.getText().toString().trim();
 
 
-                formValidation();
-                Toast.makeText(getContext(), "Result: "+ formValidation().toString(), Toast.LENGTH_SHORT).show();
 
 
-               if(!formValidation()){
+
+               if(formValidation() == true){
                    Toast.makeText(getContext(), "Form is missing some values, please try again.", Toast.LENGTH_SHORT).show();
                }else{
 
@@ -385,12 +384,20 @@ public class RegisterFragment extends Fragment {
             result = result || true;
         }
 
-        if(hall.equals("Select Hall") ){
-            hall = "KULUBYA";
+        if(!hall.equals("Select Hall") ){
+            if(hall.equals("KULUBYA")){hall="Kulubya";}
+            if(hall.equals("NORTH_HALL")){hall="North_hall";}
+            if(hall.equals("NANZIRI")){hall="Nanziri";}
+            if(hall.equals("PEARL")){hall="Pearl";}
+            if(hall.equals("BLUENILE")){hall="Blue_nile";}
+            if(hall.equals("MANDELLA")){hall="Mandella";}
+        }else{
+            hall = "Kulubya";
         }
 
-        if(maritialStatus.equals("Select Maritial Status") ){
-            maritialStatus = "SINGLE";
+        if(!maritialStatus.equals("Select Maritial Status") ){
+            if(maritialStatus.equals("SINGLE")){maritialStatus="Single";}
+            if(maritialStatus.equals("MARRIED")){maritialStatus="Married";}
         }
 
         if(gender.equals("Select Gender")){
@@ -398,8 +405,12 @@ public class RegisterFragment extends Fragment {
             result = result || true;
         }
 
-        if(status.equals("Student/Alumunus")){
+        if(!status.equals("Student/Alumunus")){
 
+            if(status.equals("STUDENT")){status="Student";}
+            if(status.equals("ALUMNUS")){status="Alumnus";}
+
+        }else{
             result = result || true;
         }
 
