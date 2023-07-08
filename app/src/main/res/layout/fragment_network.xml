@@ -16,14 +16,27 @@
         android:background="@drawable/button_background">
 
 
+       <androidx.appcompat.widget.SearchView
+           android:id="@+id/network_search"
+           android:layout_width="match_parent"
+           android:layout_height="35dp"
+           android:tooltipText="Search for anyone"
+           app:layout_constraintStart_toStartOf="parent"
+           android:background="@drawable/search_bg"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:searchIcon="@drawable/baseline_search_24"
+           />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/network_recyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/network_search"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:paddingBottom="35dp"
+
            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

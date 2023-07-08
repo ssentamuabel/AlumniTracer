@@ -28,15 +28,13 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        replaceFragment(new HomeFragment());
+        replaceFragment(new NetworkFragment());
 
         binding.mainBottomNavigatorView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.main_home:
-                        replaceFragment(new HomeFragment());
-                        break;
                     case R.id.main_opportunity:
                         replaceFragment(new OpportunityFragment());
                         break;

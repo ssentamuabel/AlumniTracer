@@ -69,7 +69,7 @@
                     android:layout_margin="12dp"
                     android:hint="First Name"
                     android:textColor="@color/primaryDark"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
 
 
@@ -83,7 +83,7 @@
                     android:hint="Last Name"
                     android:inputType="text"
                     android:textColor="@color/primaryDark"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
                 <EditText
                     android:id="@+id/contact"
@@ -95,7 +95,7 @@
                     android:hint="contact"
                     android:inputType="text"
                     android:textColor="@color/primaryDark"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
 
 
@@ -109,7 +109,7 @@
                     android:hint="Registration Number"
                     android:inputType="text"
                     android:textColor="@color/primaryDark"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
 
                 <Spinner
@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/regNo"
                     android:layout_margin="10dp"
-                    android:background="@drawable/button_background_white"
+                    android:background="@drawable/spinner_bg"
 
                     android:padding="8dp" />
 
@@ -135,7 +135,7 @@
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="@color/primaryDark"
-                    android:textColorHint="@color/primaryColor" />
+                    android:textColorHint="@color/black" />
 
                 <Spinner
                     android:id="@+id/hall"
@@ -143,8 +143,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/course"
                     android:layout_margin="10dp"
-                    android:textColor="@color/primaryDark"
-                    android:background="@drawable/button_background_white"
+
+                    android:background="@drawable/spinner_bg"
                     android:inputType="text"
                     android:padding="8dp" />
 
@@ -160,7 +160,7 @@
                     android:hint="date of birth"
                     android:inputType="text"
                     android:clickable="true"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
                 <Spinner
                     android:id="@+id/gender"
@@ -168,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/dateOfBirth"
                     android:layout_margin="10dp"
-                    android:background="@drawable/button_background_white"
+                    android:background="@drawable/spinner_bg"
                     android:padding="8dp" />
                 <Spinner
                     android:id="@+id/maritialStatus"
@@ -176,11 +176,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/gender"
                     android:layout_margin="10dp"
-                    android:textColor="@color/primaryDark"
-                    android:background="@drawable/button_background_white"
-                    android:hint="Maritial status"
-                    android:inputType="text"
-                    android:textColorHint="@color/primaryColor"
+
+                    android:background="@drawable/spinner_bg"
                     android:padding="8dp" />
                 <EditText
                     android:id="@+id/residence"
@@ -192,7 +189,7 @@
                     android:background="@drawable/button_background_white"
                     android:hint="Place of residence"
                     android:inputType="text"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
                 <EditText
                     android:id="@+id/homeDistrict"
@@ -204,7 +201,7 @@
                     android:background="@drawable/button_background_white"
                     android:hint="Home District"
                     android:inputType="text"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
 
 
@@ -218,7 +215,7 @@
                     android:background="@drawable/button_background_white"
                     android:hint="username"
                     android:inputType="text"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
                 <EditText
                     android:id="@+id/email"
@@ -230,7 +227,7 @@
                     android:background="@drawable/button_background_white"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
 
                 <EditText
@@ -244,7 +241,7 @@
                     android:inputType="textPassword"
                     android:background="@drawable/button_background_white"
                     android:hint="Password"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
 
                 <EditText
@@ -258,7 +255,7 @@
                     android:inputType="textPassword"
                     android:background="@drawable/button_background_white"
                     android:hint="Comfirm Password"
-                    android:textColorHint="@color/primaryColor"
+                    android:textColorHint="@color/black"
                     android:padding="8dp" />
 
                 <Button

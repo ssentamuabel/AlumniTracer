@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/network_background"
     android:paddingTop="2dp"
     android:paddingBottom="4dp"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="6dp"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
     
     
@@ -23,6 +24,7 @@
             android:id="@+id/tv_prefix"
             android:layout_width="wrap_content"
             android:text="p"
+            android:textAllCaps="true"
             android:layout_centerInParent="true"
             android:textColor="@color/primaryDark"
             android:textSize="16sp"
@@ -71,6 +73,19 @@
        app:layout_constraintBottom_toTopOf="@id/name"
         />
     <TextView
+        android:id="@+id/network_reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="19"
+        android:padding="2dp"
+        android:textSize="10sp"
+        android:background="@drawable/reg_outline"
+        android:textColor="@color/primaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
+    <TextView
         android:id="@+id/contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,7 +93,6 @@
         android:layout_marginLeft="8dp"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@id/profile"
-
         app:layout_constraintBottom_toBottomOf="@id/profile"
 
         />

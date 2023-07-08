@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                android:layout_below="@id/submit_button"
-                android:text="Error: this is the error"
+
                 android:textColor="#FF0000"
                 />
 

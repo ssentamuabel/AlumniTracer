@@ -18,7 +18,10 @@
             android:id="@+id/opp_form_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:gravity="center"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textAppearance="@color/primaryDark"
+            android:textSize="20sp"
             android:text="Add opportunity"/>
         <EditText
             android:id="@+id/input_opport_title"
@@ -36,9 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/input_opport_title"
             android:padding="8dp"
-
             android:layout_margin="12dp"
-            android:background="@drawable/button_background_white"
+            android:background="@drawable/spinner_bg"
             />
         <TextView
             android:id="@+id/input_opp_due_date"
@@ -62,7 +64,7 @@
             android:inputType="textMultiLine"
             android:padding="8dp"
             android:layout_margin="12dp"
-            android:hint="description and details"
+            android:hint="Give some description of the opportunity in between 50 to 120 words"
             android:background="@drawable/button_background_white"/>
 
 
@@ -85,7 +87,7 @@
             android:padding="8dp"
             android:hint="select target"
             android:layout_margin="12dp"
-            android:background="@drawable/button_background"
+            android:background="@drawable/spinner_bg"
             />
         <Button
             android:id="@+id/opp_submit"

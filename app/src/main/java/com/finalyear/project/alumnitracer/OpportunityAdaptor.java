@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalyear.project.alumnitracerData.Opportunity;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +38,10 @@ public class OpportunityAdaptor   extends RecyclerView.Adapter<OpportunityAdapto
     public void onBindViewHolder(@NonNull OpportunityAdaptor.ViewHolder holder, int position) {
 
         Opportunity opportunity = opportunityList.get(position);
-        holder.dueDate.setText(opportunity.getDueDate());
+
+        String formattedDate = opportunity.getDueDate().substring(0, 10);
+
+        holder.dueDate.setText(formattedDate);
         holder.category.setText(opportunity.getCategory());
         holder.title.setText(opportunity.getTitle());
         holder.description.setText(opportunity.getDescription());

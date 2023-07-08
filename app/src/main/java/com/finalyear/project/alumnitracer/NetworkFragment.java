@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,7 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
+
 import android.widget.Toast;
 
 import com.finalyear.project.ApiConf.ApiInterface;
@@ -44,7 +45,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private StudentAdapter adapter;
     private ApiInterface apiInterface;
 
     private List<Student>students = new ArrayList<Student>();
@@ -116,6 +117,8 @@ public class NetworkFragment extends Fragment {
                             adapter = new StudentAdapter(students, container.getContext());
 
                             recyclerView.setAdapter(adapter);
+
+
                         }
                     }
                 }else{
@@ -130,11 +133,27 @@ public class NetworkFragment extends Fragment {
             }
         });
 
+        SearchView searchView = (SearchView) view.findViewById(R.id.network_search);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
 
 
         // Inflate the layout for this fragment
         return view;
     }
+
 
 
 
